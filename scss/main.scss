@@ -1,0 +1,967 @@
+// Import reset
+@import "./scss_helpers/reset";
+// Import variables
+@import "./scss_helpers/variables";
+// Import utilities
+@import "./scss_helpers/utils";
+// Import mixins
+@import "./scss_helpers/mixins";
+
+
+*{
+  scroll-behavior: smooth;
+}
+::-webkit-scrollbar{
+  background-color: white;
+}
+::-webkit-scrollbar-thumb{
+  background: linear-gradient(to bottom, $primary-color 0%, $secondary-color 100%);
+}
+/* Start Header */
+header{
+  background-color: #ffffff;
+  position: fixed;
+  width: 100%;
+  font-weight: 600;
+  top: 0;
+  left: 0;
+  @include flex(center);
+  min-height: 100px;
+  z-index: 100;
+  min-height: 100px;;
+  box-shadow: 0 8px 6px -6px #999999;
+
+  .navbar{
+    @include flex(space-between, stretch, column);
+    height: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    @include sm{
+      flex-direction: row;
+      align-items: center;
+    }
+
+    &-top{
+      @include flex(space-between);
+      flex: 1;
+
+      img{
+        max-width: 235px;
+      }
+    }
+
+    .menu-toggle{
+      @include flex(center);
+      padding: 5px;
+      color: $primary-color;
+      border: 2px solid $primary-color;
+      border-radius: 5px;
+      font-size: 25px;
+      cursor: pointer;
+
+      @include lg{
+        display: none;
+      }
+    }
+
+    .nav-list{
+      li{
+        overflow: hidden;
+      }
+    }
+    .nav-list{
+      display: none;
+
+      @include lg{
+        display: flex;
+      }
+
+      a{
+        padding: 5px 10px;
+        position: relative;
+        transition: all 0.5s linear;
+        &::after{
+          content: "";
+          background-color: $secondary-color;
+          margin: auto;
+          position: absolute;
+          left: -130px;
+          bottom: 3px;
+          width: 100%;
+          height: 3px;
+          transition: all 0.5s linear;
+        }
+        &:hover{
+          color: $secondary-color;
+        }
+        &:hover::after{
+          left: 0px;
+        }
+      }
+    }
+    .navbar-button{
+      margin-top: 10px;
+
+      @include sm{
+        margin: 0 0 0 10px;
+      }
+
+      .btn{
+        display: block;
+      }
+    }
+  }
+}
+/* End Header */
+/*----------------------------------------------------*/
+/* Start Sidebar */
+.sidebar{
+  position: fixed;
+  left: -992px;
+  top: 136.600px;
+  width: 100%;
+  height: calc(100vh - 136.600px);
+  background: linear-gradient(to bottom, $primary-color 0%, $secondary-color 100%);
+  opacity: 0.3;
+  transition: all 0.5s linear;
+
+  &.open{
+    left: 0;
+    opacity: 1;
+    z-index: 1000;
+  }
+
+  @media (min-width: 280px) and (max-width: 316px){
+    top: 174.43px;
+    height: calc(100vh - 174.43px);
+  }
+
+  @include sm{
+    top: 100px;
+    height: calc(100vh - 100px);
+  }
+
+  @include lg{
+    display: none;
+  }
+
+  &-nav-list{
+    padding: 30px 10px;
+
+    li{
+      text-align: center;
+      width:fit-content;
+      padding: 10px;
+      margin: auto;
+      overflow: hidden;
+
+      a{
+        padding: 5px 10px;
+        position: relative;
+        transition: all 0.5s linear;
+        &::after{
+          content: "";
+          background-color: $secondary-color;
+          margin: auto;
+          position: absolute;
+          left: -130px;
+          bottom: 2px;
+          width: 100%;
+          height: 3px;
+          transition: all 0.5s linear;
+        }
+        &:hover{
+          color: $secondary-color;
+        }
+        &:hover::after{
+          left: 0px;
+        }
+      }
+    }
+  }
+}
+/* End Sidebar */
+/*----------------------------------------------------*/
+/* Start Banner */
+.banner{
+  margin-top: 138.2px;
+  @include sm{
+    margin-top: 100px;
+  }
+  background-image: url("./images/slide1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  min-height: calc(100vh - 100px);
+  overflow: hidden;
+
+  @include md{
+    @include flex(stretch, center);
+  }
+
+  .container{
+    margin-top: 60px;
+    @include grid(1, 10px);
+    
+    @include md{
+      @include grid(2, 10px);
+    }
+
+    .banner-content{
+      @include flex(center, center);
+      color: #ffffff;
+      font-size: 24px;
+
+      @include md{
+        @include flex(center, center, column);
+      }
+    }
+
+    .banner-image{
+      @include md{
+        width: 165%;
+        margin-top: 100px;
+      }
+
+      transition: all 0.5s linear;
+
+      &:hover{
+        transform: translateY(-10px);
+      }
+    }
+  }
+}
+/* End Banner */
+/*----------------------------------------------------*/
+/* Start About */
+.about{
+  margin-top: 30px;
+  .container{
+    .box{
+      margin-bottom: 20px;
+      @include grid(1, 10px);
+
+    @include md{
+      @include grid(2, 10px);
+    }
+
+    .box-content{
+      text-align: center;
+      @include flex(center, center, column);
+
+      h1{
+        background: linear-gradient(to right, $primary-color 0%, $secondary-color 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      }
+
+      .middle-p{
+        margin-top: 25px;
+        margin-bottom: 25px;
+      }
+    
+
+    .box-image{
+      @include flex(center, center);
+      margin-top: 10px;
+      margin-bottom: 10px;
+      transition: all 0.5s linear;
+
+      &:hover{
+        transform: translateY(-10px);
+      }
+    }
+
+    img{
+      max-width: 300px;
+    }
+    }
+    .middle-box{
+      .middle-image{
+        @include md{
+          order: -1;
+        }
+      }
+    }
+  }
+}
+/* End About */
+/*----------------------------------------------------*/
+/* Start Services */
+.services{
+  background-image: url("./images/bg_gradient.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  text-align: center;
+  padding-bottom: 30px;
+
+  @include sm{
+    min-height: 200vh;
+  }
+  @include md{
+    min-height: 120vh;
+  }
+  &::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left:0;
+    width: 100%;
+    height: 240px;
+    background-image: url("./images/top_layer.png");
+  }
+  &::after{
+    content: "";
+    background-image: url("./images/bottom_layer.png");
+    position: absolute;
+    bottom: -1px;
+    left:0;
+    width: 100%;
+    height: 240px;
+  }
+
+  .container{
+    padding-top: 300px;
+    @include sm{
+      @include grid(1, 100px);
+    }
+    @include md{
+      @include grid(3, 15px);
+    }
+
+    .service-box{
+      background-color: #ffffff;
+      border-radius: 8px;
+      position: relative;
+      text-align: center;
+      padding: 100px 40px 20px;
+      margin-top: 10px;
+      margin-bottom: 100px;
+      transition: all 0.5s linear;
+
+      &:hover{
+        transform: translateY(-10px);
+      }
+
+      .service-image{
+        border: 7px solid #eeeeee;
+        background-color: #ffffff;
+        border-radius: 50%;
+        overflow: hidden;
+        position: absolute;
+        left: 50%;
+        top: -75px;
+        transform: translateX(-50%);
+        max-width: 150px;
+      }
+
+      .service-content{
+        h2{
+          margin-top: 30px;
+          margin-bottom: 40px;
+        }
+        p{
+          width: 75%;
+          margin: auto;
+          margin-bottom: 40px;
+        }
+      }
+    }
+  }
+}
+/* End Services */
+/*----------------------------------------------------*/
+.screenshoots{
+  h1{
+    color: #000000;
+    text-align: center;
+    position: relative;
+    width:fit-content;
+    font-size: 40px;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-weight: bold;
+    &::before{
+      content: "";
+      width: 100px;
+      height: 5px;
+      position: absolute;
+      background-color: #dddddd;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  .box{
+    font-size: 0px;
+    @include sm{
+      @include grid(2, 0);
+      gap: 0px;
+    }
+    @include md{
+      @include grid(4, 0);
+      gap: 0px;
+    }
+
+    .img{
+      overflow: hidden;
+      img{
+
+        transition: all 0.5s linear;
+
+        &:hover{
+            transform: scale(1.1);
+          }
+        }
+    }
+  }
+}
+/*----------------------------------------------------*/
+/* Start Features */
+.features{
+  h1{
+    width:fit-content;
+    font-size: 40px;
+    position: relative;
+    margin: auto;
+    margin-top: 50px;
+    font-weight: bold;
+    &::before{
+      content: "";
+      width: 100px;
+      height: 5px;
+      position: absolute;
+      background-color: #dddddd;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    span{
+      color: $primary-color;
+    }
+  }
+
+  .container{
+    border-bottom: 2px solid #ffffff;
+    padding-top: 100px;
+    padding-bottom: 20px;
+    @include sm{
+      @include grid(1, 0px);
+    }
+    @include md{
+      @include grid(3, 15px);
+    }
+    .feature{
+      display: flex;
+      flex-direction: column;
+
+      @include sm{
+        margin-bottom: -40px;
+      }
+      @include md{
+        margin-right: 10px;
+        margin-left: 10px;
+      }
+
+      .sub-feature{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 140px;
+        display: flex;
+        gap: 20px;
+        border-bottom: 1px solid #dddddd;
+        transition: all 0.5s linear;
+
+        &:hover{
+          transform: translateY(-10px);
+        }
+
+        .feature-icon{
+          color: $secondary-color;
+          text-align: center;
+          border: 2px solid $secondary-color;
+          border-radius: 50%;
+          padding: 20px;
+          margin-right: 20px;
+
+
+          i{
+            width: 45px;
+            font-size: 40px;
+            transition: all 0.5s linear;
+          }
+          &:hover{
+            background-color: $primary-color;
+            color: #ffffff;
+            border-color: $primary-color;
+          }
+        }
+      }
+    }
+    .image{
+      @include sm{
+        width: 30%;
+      }
+      @include md{
+        width: 75%;
+      }
+      display: block;
+      margin: auto;
+
+      img{
+        margin-top: 10px;
+        margin-bottom: 10px;
+            transition: all 0.5s linear;
+
+      &:hover{
+        transform: translateY(-10px);
+      }
+      }
+    }
+  }
+}
+/* End Features */
+/*----------------------------------------------------*/
+/* Start Steps */
+.steps{
+  background-image: url("./images/bg_gradient.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  height: 920px;
+  text-align: center;
+  padding-bottom: 30px;
+
+  @include md{
+    height: 700px;
+  }
+  &::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left:0;
+    width: 100%;
+    height: 240px;
+    background-image: url("./images/top_layer.png");
+  }
+  &::after{
+    content: "";
+    background-image: url("./images/bottom_layer.png");
+    position: absolute;
+    bottom: -1px;
+    left:0;
+    width: 100%;
+    height: 240px;
+  }
+
+  h1{
+    width:fit-content;
+    color: #ffffff;
+    font-size: 40px;
+    top: 250px;
+    position: relative;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 50%;
+
+    font-weight: bold;
+    &::before{
+      content: "";
+      width: 100px;
+      height: 5px;
+      position: absolute;
+      background-color: #dddddd;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    span{
+      color: $primary-color;
+    }
+  }
+
+  .container{
+    @media (max-width: 400px){
+      bottom: 70%;
+    }
+    @media (max-width: 767px){
+      bottom: 10%;
+    }
+    position: absolute;
+    width: 100%;
+    margin: -40px auto;
+    @include sm{
+      bottom: 35%;
+    }
+    @include md{
+      bottom: 18%;
+    }
+    @include lg{
+      bottom: 35%;
+    }
+    @include sm{
+      @include grid(2, 0px);
+    }
+    @include md{
+      @include grid(2, 0px);
+    }
+    @include lg{
+      @include grid(4, 0px);
+    }
+  }
+
+  .step{
+    color: #ffffff;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    i{
+      font-size: 70px;
+      margin-bottom: 15px;
+    }
+    p{
+      font-weight: bold;
+      font-size: 25px;
+    }
+  }
+}
+/* End Steps */
+/*----------------------------------------------------*/
+/* Start Prices */
+.prices{
+  h1{
+    color: #000000;
+    text-align: center;
+    position: relative;
+    width:fit-content;
+    font-size: 40px;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-weight: bold;
+    &::before{
+      content: "";
+      width: 100px;
+      height: 5px;
+      position: absolute;
+      background-color: #dddddd;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  .container{
+    @include sm{
+      @include grid(2, 20px);
+    }
+    @media (max-width: 705px){
+      @include grid(1, 20px);
+    }
+    @include lg{
+      @include grid(3, 20px);
+    }
+    text-align: center;
+
+    .price{
+      border: 1px solid #dddddd;
+      border-radius: 5px;
+      padding: 15px;
+      transition: all 0.5s linear;
+      box-shadow: 6px 6px 2px -6px #999999;
+
+      &:hover{
+        transform: translateY(-10px);
+      }
+
+      .main-content{
+        position: relative;
+        padding-bottom: 15px;
+        margin-bottom: 40px;
+        h2{
+          background-color: $secondary-color;
+          color:#ffffff;
+          text-transform: uppercase;
+          padding: 20px 50px;
+          margin-bottom: 20px;
+        }
+        &.main-2{
+          h2{
+            background-color: $primary-color;
+          }
+        }
+        p{
+          color: $primary-color;
+          font-size: 40px;
+        }
+        span{
+          color: $primary-color;
+          font-size: 20px;
+        }
+        &::before{
+          content: "";
+          width: 200px;
+          height: 1px;
+          position: absolute;
+          background-color: #dddddd;
+          bottom: -10px;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+
+      .basic-content{
+        p{
+          font-size: 20px;
+          font-weight: 500;
+          margin: 40px;
+        }
+      }
+
+      .btn{
+        a{
+          color: #ffffff;
+        }
+      }
+      .btn-2{
+        background-color: $secondary-color;
+      }
+    }
+  }
+}
+/* End Prices */
+/*----------------------------------------------------*/
+/* Start Team */
+.teams{
+  padding-top: 50px;
+
+  h1{
+    color: #000000;
+    text-align: center;
+    position: relative;
+    width:fit-content;
+    font-size: 40px;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-weight: bold;
+    &::before{
+      content: "";
+      width: 100px;
+      height: 5px;
+      position: absolute;
+      background-color: #dddddd;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  .container{
+    text-align: center;
+
+    @include sm{
+      @include grid(2, 20px);
+    }
+    @include md{
+      @include grid(4, 20px);
+    }
+  }
+
+  .team{
+    margin-bottom: 20px;
+    transition: all 0.5s linear;
+    
+      &:hover{
+        transform: translateY(-10px);
+      }
+      
+    img{
+      margin-bottom: 20px;
+      border-radius: 10px;
+    }
+    .name{
+      color: $primary-color;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .job{
+      font-weight: bold;
+    }
+  }
+}
+/* End Team */
+/*----------------------------------------------------*/
+/* Start Contact */
+.contact{
+  margin: 50px 0;
+  background-color: $primary-color;
+  color: #ffffff;
+
+  @include md{
+    @include grid(2, 10px)
+  }
+
+  .google-map{
+    width: 100%;
+    min-height: 400px;
+  }
+  
+  .contact-form{
+    width: 500px;
+    max-width: 100%;
+    padding: 25px;
+    margin: auto;
+    
+    .section-title{
+      color: #ffffff;
+    }
+
+    p{
+      margin: 40px 0;
+    }
+
+    input, textarea{
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 13px;
+      border: none;
+      outline: none;
+    }
+
+    textarea{
+      resize: none;
+    }
+
+    .send{
+      background-color: $secondary-color;
+      color: white;
+      font-size: 18px;
+      text-align: center;
+      padding: 10px 17px;
+      transition: all 0.5s linear;
+    
+      &:hover{
+        color: #ffffff;
+        background: linear-gradient(to bottom, $primary-color 0%, $secondary-color 100%);
+      }
+    }
+  }
+}
+/* End Contact */
+/*----------------------------------------------------*/
+/* Start Footer */
+.footer{
+  padding-top: 50px;
+
+  .container{
+    padding-bottom: 70px;
+    @include sm{
+      @include grid(2, 10px);
+    }
+    @include md{
+      @include grid(4, 30px);
+    }
+
+    .box-1{
+      margin-bottom: 20px ;
+
+      .img{
+        min-height: 85px;
+        img{
+          max-width: 200px;
+        }
+      }
+
+      .first-p{
+        margin-top: 5px;
+        margin-bottom: 25px;
+      }
+    }
+  
+    .box-2{
+      margin-bottom: 30px;
+
+      .h2{
+        min-height: 90px;
+
+        h2{
+          font-weight: bold;
+        }
+      }
+
+      .first-p{
+        margin-bottom: 25px;
+      }
+    }
+
+    .box-3{
+      h2{
+        font-weight: bold;
+        margin-bottom: 25px;
+      }
+  
+      .box{
+        a{
+          @include flex(flex-start);
+          gap: 20px;
+          padding-bottom: 20px;
+          margin-bottom: 30px;
+          border-bottom: 2px dotted #dddddd;
+          transition: all 0.5s linear;
+
+          &:hover{
+            color: $primary-color;
+          }
+
+          i{
+            font-size: 22px;
+          }
+        }
+      }
+    }
+  
+    .box-4{
+      @include flex(space-between, flex-start, column);
+      gap: 20px;
+      .box{
+        display: flex;
+        gap: 20px;
+        img{
+          min-width: 100px;
+        }
+
+        .content{
+          @include flex(center, flex-start, column);
+        }
+      }
+    }
+  }
+
+  .copyright{
+    @include flex(center, center);
+    background-color: $primary-color;
+    width: 100%;
+    min-height: 50px;
+
+    p{
+      color: #ffffff;
+
+      a{
+        font-weight: bold;
+        color: $secondary-color;
+      }
+    }
+  }
+}
+/* End Footer */
